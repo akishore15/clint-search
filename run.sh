@@ -1,29 +1,24 @@
-sudo apt install git
-echo "Do you want to install? (y/n)"
-read ans1
-if [ ans1 -eq "y" ]; then
-echo "OK"
-echo "Booting on a port, choose which one."
-read pt
-sudo ufw allow --p $pt
-git clone https://github.com/akisore15/clint-search/google.py --p $pt
-echo "*-----"
-sleep 1
-echo "**----"
-sleep 1
-echo "***---"
-sleep 1
-echo "****--"
-sleep 1
-echo "*****-"
-sleep 1
-echo "******"
-sleep 1
-echo "BOOTED! Go to localhost:$pt to view your own Google Search!"
-else
-echo "OK, deleting."
-fi
-echo "Leaving portal..."
-sleep 3
-exit
+#!/bin/bash
+
+# Function to handle the search query
+search() {
+    local query="$1"
+    while true; do
+        sleep 3
+        if [[ "$query" == *" "* ]]; then
+            query="${query// /+}"
+        fi
+        echo "https://google.com/search?q=$query"
+        sleep 3
+    done
+}
+
+# Read user input
+read -p "Search... " query
+
+# Trap the keyboard interrupt (Ctrl+C) to exit gracefully
+trap 'echo -e "\nSearch interrupted by user."; exit' SIGINT
+search "$query"
+google-chrome "https://google.com/search?q=$query"
+
 
