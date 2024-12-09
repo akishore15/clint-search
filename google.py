@@ -9,5 +9,10 @@ def search(s):
         elif " " in s == False:
             print(f"https://google.com/search?q={s}")
         delay.sleep(3)
-search()
+if KeyboardInterrupt == True:
+    search()
+elif KeyboardInterrupt == False:
+    delay.sleep(while KeyboardInterrupt == False)
+else:
+    exit(print("ERROR CODE : 0"))
 
