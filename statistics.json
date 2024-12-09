@@ -1,9 +1,0 @@
-{
-    "browser-statistics":{
-        "api": "python",
-        "webhost": "git",
-        "main-coding-langs": "html, css, js, python, shell",
-        "port": "8085"
-    }
-}
-    
